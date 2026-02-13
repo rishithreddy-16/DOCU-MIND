@@ -2,6 +2,7 @@
 
 import os
 import numpy as np
+import streamlit as st
 from typing import List, Dict
 
 from langchain_groq import ChatGroq
@@ -14,7 +15,7 @@ from langchain_core.documents import Document
 from sentence_transformers import SentenceTransformer
 
 # ============ CONFIG ============
-os.environ["GROQ_API_KEY"] = "YOUR-API KEY"
+os.environ["GROQ_API_KEY"] = st.secrets.get("GROQ_API_KEY", "")
 
 CHROMA_DIR = "./chroma_store"
 COLLECTION_NAME = "loan_contract_chunks"
@@ -304,3 +305,4 @@ if __name__ == "__main__":
         batch_mode()
     else:
         interactive_mode()
+
