@@ -17,7 +17,7 @@ from chromadb.api.types import EmbeddingFunction, Documents, Embeddings as Chrom
 from ingest import load_and_chunk
 
 # ============ CONFIG ============
-os.environ["GROQ_API_KEY"] = "GROQ_API_KEY"
+os.environ["GROQ_API_KEY"] = st.secrets.get("GROQ_API_KEY", "")
 
 CHROMA_DIR = "./chroma_store"
 COLLECTION_NAME = "loan_contract_chunks"
@@ -296,3 +296,4 @@ if user_input:
                     st.error(f"❌ Error: {e}")
                     import traceback
                     st.code(traceback.format_exc())
+
