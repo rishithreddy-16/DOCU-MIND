@@ -1,0 +1,32 @@
+.streamlit/secrets.toml
+*.env
+__pycache__/
+chroma_store/
+*.pdf
+.DS_Store
+```
+
+### 3. **The `_env` File Issue**
+
+You uploaded a file called `_env`. If this contains your API key:
+- ❌ **Remove it from GitHub immediately** (it's already exposed)
+- ✅ Regenerate your API key at https://console.groq.com/
+- ✅ Use Streamlit secrets instead
+
+## Updated File Structure
+
+Your project should look like:
+```
+docu-mind/
+├── .streamlit/
+│   └── secrets.toml          # ⚠️ NEVER commit this
+├── app.py
+├── ingest.py
+├── rag_qa.py
+├── build_vector_store.py
+├── query_vector_store.py
+├── inspect_storage.py
+├── requirements.txt          # ✅ Updated
+├── .gitignore               # ✅ Add this
+├── README.md
+└── contract.pdf             # Sample (optional)
